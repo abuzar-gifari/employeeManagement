@@ -93,86 +93,8 @@ public class EmployeeManagement
 				display(al);
 				break;
 				
-			case 2: System.out.println("Enter the Employee ID to search :");
-					id = sc.nextInt();
-					int i=0;
-					for(Employee e: al)
-					{
-						if(id == e.id)
-						{
-							System.out.println(e+"\n");
-							i++;
-						}
-					}
-					if(i == 0)
-					{
-						System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
-					}
-					break;
-			
-			case 3: System.out.println("\nEnter the Employee ID to EDIT the details");
-					id = sc.nextInt();
-					int j=0;
-					for(Employee e: al)
-					{
-						if(id == e.id)
-						{	
-							j++;
-						do{
-							int ch1 =0;
-							System.out.println("\nEDIT Employee Details :\n" +
-												"1). Employee ID\n" +
-												"2). Name\n" +
-												"3). Salary\n" +
-												"4). Contact No.\n" +
-												"5). Email-ID\n" +
-												"6). GO BACK\n");
-							System.out.println("Enter your choice : ");
-							ch1 = sc.nextInt();
-							switch(ch1)
-							{
-							case 1: System.out.println("\nEnter new Employee ID:");
-									e.id =sc.nextInt();
-									System.out.println(e+"\n");
-									break;
-							
-							case 2: System.out.println("Enter new Employee Name:");
-									e.name =sc.nextLine();
-									System.out.println(e+"\n");
-									break;
-									
-							case 3: System.out.println("Enter new Employee Salary:");
-									e.salary =sc.nextFloat();
-									System.out.println(e+"\n");
-									break;
-									
-							case 4: System.out.println("Enter new Employee Contact No. :");
-									e.contact_no =sc.nextLong();
-									System.out.println(e+"\n");
-									break;
-									
-							case 5: System.out.println("Enter new Employee Email-ID :");
-									e.email_id =sc.next();
-									System.out.println(e+"\n");
-									break;
-									
-							case 6: j++;
-									break;
-									
-							default : System.out.println("\nEnter a correct choice from the List :");
-										break;
-							
-							}
-							}
-						while(j==1);
-						}
-					}
-					if(j == 0)
-					{
-						System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
-					}
-				
-					break;
+			// case 2 gifari koris (ami wasim, kivabe korbo bujhteci na)
+					// case 1 ami koira disi, case 3 rahat koris
 					
 			case 4: System.out.println("\nEnter Employee ID to DELETE from the Databse :");
 					id = sc.nextInt();

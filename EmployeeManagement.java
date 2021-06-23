@@ -1,16 +1,8 @@
 package employeeManagement;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-@SuppressWarnings("serial")
+
 class Employee implements Serializable{
 
 	int id;
@@ -38,17 +30,17 @@ class Employee implements Serializable{
 
 public class EmployeeManagement
 {	
-	static void display(ArrayList<Employee> al)
+	static void display()
 	{
 		System.out.println("\n--------------Employee List---------------\n");
-		System.out.println(String.format("%-10s%-15s%-10s%-20s%-10s", "ID","Name","salary","contact-no","Email-Id"));
+		System.out.println(String.format("ID","Name","salary","contact-no","Email-Id");
 		for(Employee e : al)
 		{
 			System.out.println(String.format("%-5s%-20s%-10s%-15s%-10s",e.id,e.name,e.salary,e.contact_no,e.email_id));
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	public static void main(String[] args)
 	{
 		int id;
@@ -60,28 +52,22 @@ public class EmployeeManagement
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Employee> al = new ArrayList<Employee>();
 		
-		File f = null;
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
-		FileOutputStream fos = null;
-		ObjectOutputStream oos =null;
 		try{
 			
-			f = new File("N:/Java Work Space/Eclipse Programs/Employee Management Tool/src/EmployeeDataList1.txt");
+			f = new File("Employee Management Tool/src/EmployeeDataList1.txt");
 			if(f.exists())
 			{
-				fis = new FileInputStream(f);
+				fis = new File(f); // error found (wasim you need to solve this)
 				ois = new ObjectInputStream(fis);
-				al = (ArrayList<Employee>)ois.readObject();
+				// This portion need to update Rahat
 			}
 			
-		}
-		catch(Exception exp){
-			System.out.println(exp);
+		}catch(Exception){
+			//here error number 3
 		}
 		do
 		{
-			System.out.println("\n****Welcome to the Employee Management System***\n");
+			System.out.println("welcome to our project");
 			System.out.println("1). Add Employee to the DataBase\n" +
 								"2). Search for Employee\n" +
 								"3). Edit Employee details\n" +
@@ -197,9 +183,7 @@ public class EmployeeManagement
 					{
 						if(id == e.id)
 						{
-								al.remove(e);
-								display(al);
-								k++;
+							//I can not solve the error
 						}
 					}
 					if(k == 0)
@@ -213,7 +197,6 @@ public class EmployeeManagement
 					break;
 			
 			case 5: try {
-					al = (ArrayList<Employee>)ois.readObject();
 				
 				} catch (ClassNotFoundException e2) {
 					
@@ -224,37 +207,6 @@ public class EmployeeManagement
 				}
 					display(al);
 					break;
-			
-			case 6: try {
-					fos = new FileOutputStream(f);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(al);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				catch(Exception e2){
-					e2.printStackTrace();
-				}
-				finally{
-					try {
-						fis.close();
-						ois.close();
-						fos.close();
-						oos.close();
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-					
-				}
-					System.out.println("\nYou have chosen EXIT !! Saving Files and closing the tool.");
-					sc.close();
-					System.exit(0);
-					break;
-					
-			default : System.out.println("\nEnter a correct choice from the List :");
-						break;
-			
-			}
 		}
 		while(true);
 	}

@@ -1,15 +1,30 @@
-package employeeManagement;
-
+package Java5thSemesterProject;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-
+@SuppressWarnings("serial")
 class Employee implements Serializable{
 
-	
+	int id;
+	String name;
+	float salary;
+	long contact_no;
+	String email_id;
 	
 	public Employee(int id, String name, float salary, long contact_no, String email_id)
 	{
-
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+		this.contact_no = contact_no;
+		this.email_id = email_id;
 	}
 	
 	public String toString()
@@ -22,16 +37,17 @@ class Employee implements Serializable{
 
 public class EmployeeManagement
 {	
-	static void display()
+	static void display(ArrayList<Employee> al)
 	{
-		System.out.println(String.format("ID","Name","salary","contact-no","Email-Id");
+		System.out.println("\n--------------Employee List---------------\n");
+		System.out.println(String.format("%-10s%-15s%-10s%-20s%-10s", "ID","Name","salary","contact-no","Email-Id"));
 		for(Employee e : al)
 		{
-			System.out.println((e.id,e.name,e.salary,e.contact_no,e.email_id));
+			System.out.println(String.format("%-5s%-20s%-10s%-15s%-10s",e.id,e.name,e.salary,e.contact_no,e.email_id));
 		}
 	}
 	
-	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args)
 	{
 		int id;
@@ -43,85 +59,8 @@ public class EmployeeManagement
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Employee> al = new ArrayList<Employee>();
 		
-		try{
-			
-			f = new File("Employee Management Tool/src/EmployeeDataList1.txt");
-			if(f.exists())
-			{
-				fis = new File(f); // error found (wasim you need to solve this)
-				ois = new ObjectInputStream(fis);
-				// This portion need to update Rahat
-			}
-			
-		}catch(Exception){
-			//here error number 3
-		}
-		do
-		{
-			System.out.println("welcome to our project");
-			System.out.println("1). Add Employee to the DataBase\n" +
-								"2). Search for Employee\n" +
-								"3). Edit Employee details\n" +
-								"4). Delete Employee Details\n" +
-								"5). Display all Employees working in this company\n" +
-								"6). EXIT\n");
-			System.out.println("Enter your choice : ");
-			int ch = sc.nextInt();
-			
-			switch(ch)
-			{
-			case 1:System.out.println("\nEnter the following details to ADD list:\n");
-				System.out.println("Enter ID :");
-				id = sc.nextInt();
-				System.out.println("Enter Name :");
-				name = sc.next();
-				System.out.println("Enter Salary :");
-				salary = sc.nextFloat();
-				System.out.println("Enter Contact No :");
-				contact_no = sc.nextLong();
-				System.out.println("Enter Email-ID :");
-				email_id = sc.next();
-				al.add(new Employee(id, name, salary, contact_no, email_id));
-				display(al);
-				break;
-				
-			// case 2 gifari koris (ami wasim, kivabe korbo bujhteci na)
-					// case 1 ami koira disi, case 3 rahat koris
-					
-			case 4: System.out.println("\nEnter Employee ID to DELETE from the Databse :");
-					id = sc.nextInt();
-					int k=0;
-					try{
-					for(Employee e: al)
-					{
-						if(id == e.id)
-						{
-							//I can not solve the error
-						}
-					}
-					if(k == 0)
-					{
-						System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
-					}
-					}
-					catch(Exception ex){
-						System.out.println(ex);
-					}
-					break;
-			
-			case 5: try {
-				
-				} catch (ClassNotFoundException e2) {
-					
-					System.out.println(e2);
-				} catch (Exception e2) {
-					
-					System.out.println(e2);
-				}
-					display(al);
-					break;
-		}
-		while(true);
-	}
-	
-}
+		File f = null;
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		FileOutputStream fos = null;
+		ObjectOutputStream oos =null;

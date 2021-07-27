@@ -9,11 +9,7 @@ class Employee implements Serializable{
 	
 	public Employee(int id, String name, float salary, long contact_no, String email_id)
 	{
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
-		this.contact_no = contact_no;
-		this.email_id = email_id;
+
 	}
 	
 	public String toString()

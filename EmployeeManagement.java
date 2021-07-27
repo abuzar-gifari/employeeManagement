@@ -64,3 +64,62 @@ public class EmployeeManagement
 		ObjectInputStream ois = null;
 		FileOutputStream fos = null;
 		ObjectOutputStream oos =null;
+try{
+			
+			f = new File("N:/Java Work Space/Eclipse Programs/Employee Management Tool/src/EmployeeDataList1.txt");
+			if(f.exists())
+			{
+				fis = new FileInputStream(f);
+				ois = new ObjectInputStream(fis);
+				al = (ArrayList<Employee>)ois.readObject();
+			}
+			
+		}
+		catch(Exception exp){
+			System.out.println(exp);
+		}
+		do
+		{
+			System.out.println("\n***Welcome to the Employee Management System**\n");
+			System.out.println("1). Add Employee to the DataBase\n" +
+								"2). Search for Employee\n" +
+								"3). Edit Employee details\n" +
+								"4). Delete Employee Details\n" +
+								"5). Display all Employees working in this company\n" +
+								"6). EXIT\n");
+			System.out.println("Enter your choice : ");
+			int ch = sc.nextInt();
+			
+			switch(ch)
+			{
+			case 1:System.out.println("\nEnter the following details to ADD list:\n");
+				System.out.println("Enter ID :");
+				id = sc.nextInt();
+				System.out.println("Enter Name :");
+				name = sc.next();
+				System.out.println("Enter Salary :");
+				salary = sc.nextFloat();
+				System.out.println("Enter Contact No :");
+				contact_no = sc.nextLong();
+				System.out.println("Enter Email-ID :");
+				email_id = sc.next();
+				al.add(new Employee(id, name, salary, contact_no, email_id));
+				display(al);
+				break;
+				
+			case 2: System.out.println("Enter the Employee ID to search :");
+                                    id = sc.nextInt();
+                                    int i=0;
+                                    for(Employee e: al)
+                                    {
+                                            if(id == e.id)
+                                            {
+                                                    System.out.println(e+"\n");
+                                                    i++;
+                                            }
+                                    }
+                                    if(i == 0)
+                                    {
+                                            System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
+                                    }
+                                    break;

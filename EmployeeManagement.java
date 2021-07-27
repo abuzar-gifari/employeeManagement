@@ -5,11 +5,7 @@ import java.util.Scanner;
 
 class Employee implements Serializable{
 
-	int id;
-	String name;
-	float salary;
-	long contact_no;
-	String email_id;
+	
 	
 	public Employee(int id, String name, float salary, long contact_no, String email_id)
 	{

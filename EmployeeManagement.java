@@ -186,6 +186,42 @@ case 3: System.out.println("\nEnter the Employee ID to EDIT the details");
                                     }
 
                                     break;
+case 4: System.out.println("\nEnter Employee ID to DELETE from the Databse :");
+					id = sc.nextInt();
+					int k=0;
+					try{
+					for(Employee e: al)
+					{
+						if(id == e.id)
+						{
+								al.remove(e);
+								display(al);
+								k++;
+						}
+					}
+					if(k == 0)
+					{
+						System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
+					}
+					}
+					catch(Exception ex){
+						System.out.println(ex);
+					}
+					break;
+			
+			case 5: try {
+                                            al = (ArrayList<Employee>)ois.readObject();
+				
+				} catch (ClassNotFoundException e2) {
+					
+					System.out.println(e2);
+				} catch (Exception e2) {
+					
+					System.out.println(e2);
+				}
+					display(al);
+					break;
+
 					
 					
 			default : System.out.println("\nEnter a correct choice from the List :");

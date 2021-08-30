@@ -222,7 +222,32 @@ case 4: System.out.println("\nEnter Employee ID to DELETE from the Databse :");
 					display(al);
 					break;
 
+				case 6: try {
+					fos = new FileOutputStream(f);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(al);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				catch(Exception e2){
+					e2.printStackTrace();
+				}
+				finally{
+					try {
+						fis.close();
+						ois.close();
+						fos.close();
+						oos.close();
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 					
+				}
+					System.out.println("\nYou have chosen EXIT !! Saving Files and closing the tool.");
+					sc.close();
+					System.exit(0);
+					break;
+				
 					
 			default : System.out.println("\nEnter a correct choice from the List :");
 						break;
